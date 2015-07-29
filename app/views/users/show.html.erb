@@ -1,0 +1,9 @@
+<h2>Welkom <%= @user.user_name %></h2>
+
+<h2><%= @user.account.name %></h2>
+
+<p>Saldo: <%= "#{number_with_precision((@user.account.cents/100), :precision => 2)}" %> MONEY</p>
+
+<h3>Geschiedenis</h3>
+
+<h2>Nieuwe opdracht</h2>
