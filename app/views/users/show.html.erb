@@ -6,4 +6,15 @@
 
 <h3>Geschiedenis</h3>
 
+<% @user.sent_transfers.each do |transfer| %>
+<li><%= "#{transfer.created_at.getlocal}>> U, #{@user.user_name}, verstuurde een MONEY #{number_with_precision((transfer.transfer_amount/100), :precision => 2)} opdracht aan #{User.find(transfer.recipient_id).user_name}." %></li>
+<% end %>
+<br/>
+<% @user.received_transfers.each do |transfer| %>
+<li><%= "#{transfer.created_at.getlocal}>> U, #{@user.user_name}, ontving een MONEY #{number_with_precision((transfer.transfer_amount/100), :precision => 2)} opdracht van #{User.find(transfer.sender_id).user_name}." %></li>
+<% end %>
+
+
 <h2>Nieuwe opdracht</h2>
+
+<%= render partial: 'transfers/form' %>

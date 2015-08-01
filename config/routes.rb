@@ -2,9 +2,12 @@ Rails.application.routes.draw do
   
   resources :users, :only => :show do
     resource :account, only: [:show, :update]
+    resources :transfers, only: [:new, :create]
   end
 
-  resources :transfers, only: [:index, :create]
+  resources :transfers, only: [:index, :show]
+
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

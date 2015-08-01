@@ -1,0 +1,9 @@
+<%= form_for [@user, @transfer] do |f| %>
+	<p>
+	U, <%= @user.user_name %>, wilt<br/>
+	<%= f.number_field :transfer_amount, :step => 0.01 %> MONEY<br/>
+	overmaken naar<br/>
+	<%= f.text_field :recipient_id %> ?! <br/>	
+	<%= f.submit 'Ja.' %>
+	</p>
+<% end %>

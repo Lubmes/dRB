@@ -4,6 +4,14 @@ class User < ActiveRecord::Base
   has_one :account
   after_create :build_personal_account
 
+  has_many  :sent_transfers, 
+            :class_name => 'Transfer', 
+            :foreign_key => 'sender_id'
+  
+  has_many  :received_transfers, 
+            :class_name => 'Transfer', 
+            :foreign_key => 'recipient_id'
+
   private 
     def build_personal_account
       @account = Account.new
