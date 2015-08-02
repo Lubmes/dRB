@@ -2,10 +2,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # Geschiedenis
-    @transfers = Transfer.all
-    # Opdracht formulier
     @transfer = Transfer.new
+    @transfers = @user.all_transfers
+    @transfers = @transfers.sort_by { |f| f.created_at }
   end
 
   private

@@ -8,14 +8,16 @@ class Transfer < ActiveRecord::Base
 
   validates :sender_id, presence: true
   validates :recipient_id, presence: true
-  validates :transfer_amount, numericality: {:greater_than => 0}
+  validates :amount, numericality: { greater_than: 0, only_integer: true }
 
-  before_create :transfer_amount_to_cents
-  private
-    def transfer_amount_to_cents
-      cents = self.transfer_amount * 100
-      cents.to_i
-      self.transfer_amount = cents
-    end
+  def recipient_id=(value)
+    user = User.find_by_user_name(value)
+    self[:recipient_id] = user.id 
+  end
+
+  def amount=(value)
+    cents = value.to_f * 100
+    self[:amount] = cents.to_i
+  end
 
 end

@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
             :class_name => 'Transfer', 
             :foreign_key => 'recipient_id'
 
+  def all_transfers
+    self.sent_transfers + self.received_transfers
+  end
+
   private 
     def build_personal_account
       @account = Account.new

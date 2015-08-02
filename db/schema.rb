@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(version: 20150729121539) do
   create_table "transfers", force: :cascade do |t|
     t.integer  "sender_id"
     t.integer  "recipient_id"
-    t.integer  "transfer_amount"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "amount"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|

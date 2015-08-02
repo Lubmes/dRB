@@ -3,7 +3,7 @@ class CreateTransfers < ActiveRecord::Migration
     create_table :transfers do |t|
       t.references :sender
       t.references :recipient
-      t.integer :transfer_amount
+      t.integer :amount
       t.timestamps null: false
     end
   end
